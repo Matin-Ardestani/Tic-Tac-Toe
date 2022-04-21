@@ -158,6 +158,8 @@ class Ui_MainWindow(object):
         for btn in self.btn_list:
             btn.setEnabled(True)
             btn.setText('')
+        
+        self.click_counter = 0
 
     # show the winner
     def show_winner(self, winner):
