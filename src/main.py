@@ -92,8 +92,22 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         #===========================My Codes===========================================
-        self.actionOne_player.triggered.connect(lambda: [self.menuMode.setTitle('One Player Mode') , self.onePlayer_mode()]) # change the btn name and call the functionsself.menuMode.setTitle('One Player Mode')
-        self.actionTwo_player.triggered.connect(lambda: [self.menuMode.setTitle('Two Player Mode') , self.TwoPlayer_mode()]) # change the btn name and call the functionsself.menuMode.setTitle('One Player Mode')
+        # set game mode
+        self.twoPlayer_mode()
+        self.actionOne_player.triggered.connect(self.onePlayer_mode)
+        self.actionTwo_player.triggered.connect(self.twoPlayer_mode)
+
+        # click counter
+        self.click_counter =  0
+        self.btn_1.clicked.connect(lambda: self.clickCounter(self.btn_1))
+        self.btn_2.clicked.connect(lambda: self.clickCounter(self.btn_2))
+        self.btn_3.clicked.connect(lambda: self.clickCounter(self.btn_3))
+        self.btn_4.clicked.connect(lambda: self.clickCounter(self.btn_4))
+        self.btn_5.clicked.connect(lambda: self.clickCounter(self.btn_5))
+        self.btn_6.clicked.connect(lambda: self.clickCounter(self.btn_6))
+        self.btn_7.clicked.connect(lambda: self.clickCounter(self.btn_7))
+        self.btn_8.clicked.connect(lambda: self.clickCounter(self.btn_8))
+        self.btn_9.clicked.connect(lambda: self.clickCounter(self.btn_9))
 
     #===============================Designer's functions================================
     def retranslateUi(self, MainWindow):
@@ -105,11 +119,34 @@ class Ui_MainWindow(object):
 
 
     #===============================My functions=======================================
-    def onePlayer_mode(self):
-        print('one')
+    # click counter
+    def clickCounter(self, btn_number):
+        self.click_counter += 1
 
-    def TwoPlayer_mode(self):
-        print('two')
+        # show the signs
+        if self.click_counter % 2 == 0:
+            btn_number.setText('*')
+        else:
+            btn_number.setText('O')
+        
+        # disable the btn
+        btn_number.setEnabled(False)
+
+
+    # one player mode
+    def onePlayer_mode(self):
+        # change the mode title
+        self.menuMode.setTitle('One Player Mode')
+
+        self.click_counter()
+        
+
+
+
+    # two player mode
+    def twoPlayer_mode(self):
+        # change the mode title
+        self.menuMode.setTitle('Two Player Mode')
 
 
 # Run the app
