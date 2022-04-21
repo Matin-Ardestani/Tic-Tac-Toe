@@ -6,7 +6,7 @@ class Ui_MainWindow(object):
     #==================================Designer's codes==================================
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.setFixedSize(600, 600)
+        MainWindow.setFixedSize(600, 622)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.btn_6 = QtWidgets.QPushButton(self.centralwidget)
@@ -93,12 +93,23 @@ class Ui_MainWindow(object):
 
         #===========================My Codes===========================================
         # set game mode
+        self.oneplayermode_status = False
+        self.twoplayermode_status = True
+        self.click_counter = 0
         self.twoPlayer_mode()
         self.actionOne_player.triggered.connect(self.onePlayer_mode)
         self.actionTwo_player.triggered.connect(self.twoPlayer_mode)
 
+        # change btn colors when the are disabled
+        for btn in [self.btn_1, self.btn_2, self.btn_3, self.btn_4, self.btn_5, self.btn_6, self.btn_7, self.btn_8, self.btn_9]:
+            btn.setStyleSheet('''
+                QPushButton:disabled{
+                    color: #000000;
+                }
+            ''')
+
         # click counter
-        self.click_counter =  0
+        
         self.btn_1.clicked.connect(lambda: self.clickCounter(self.btn_1))
         self.btn_2.clicked.connect(lambda: self.clickCounter(self.btn_2))
         self.btn_3.clicked.connect(lambda: self.clickCounter(self.btn_3))
@@ -132,21 +143,62 @@ class Ui_MainWindow(object):
         # disable the btn
         btn_number.setEnabled(False)
 
+        # check the situation
+        if self.oneplayermode_status == True:
+            self.onePlayer_mode()
+        elif self.twoplayermode_status == True:
+            self.twoPlayer_mode()
+
+
 
     # one player mode
     def onePlayer_mode(self):
-        # change the mode title
+        # change the mode title & status
         self.menuMode.setTitle('One Player Mode')
+        self.oneplayermode_status = True
+        self.twoplayermode_status = False
 
-        self.click_counter()
+        print('one')
         
 
 
 
     # two player mode
     def twoPlayer_mode(self):
-        # change the mode title
+        # change the mode title & status
         self.menuMode.setTitle('Two Player Mode')
+        self.oneplayermode_status = False
+        self.twoplayermode_status = True
+
+        # check if we have a winnner
+        if self.click_counter >= 5: # there have to be at least 5 clickes to have a winner
+
+            # horizonal winning situ for player one
+            if (self.btn_1.text() == 'O' and self.btn_2.text() == 'O' and self.btn_3.text() == 'O') or (self.btn_4.text() == 'O' and self.btn_5.text() == 'O' and self.btn_6.text() == 'O') or (self.btn_7.text() == 'O' and self.btn_8.text() == 'O' and self.btn_9.text() == 'O'):
+                print('first player won')
+
+            # vertical winning situ for player one
+            elif (self.btn_1.text() == 'O' and self.btn_4.text() == 'O' and self.btn_7.text() == 'O') or (self.btn_2.text() == 'O' and self.btn_5.text() == 'O' and self.btn_8.text() == 'O') or (self.btn_3.text() == 'O' and self.btn_6.text() == 'O' and self.btn_9.text() == 'O'):
+                print('first player won')
+
+            # oblique winning situ for player one
+            elif (self.btn_1.text() == 'O' and self.btn_5.text() == 'O' and self.btn_9.text() == 'O') or (self.btn_3.text() == 'O' and self.btn_5.text() == 'O' and self.btn_7.text() == 'O'):
+                print('second player won')
+
+            
+            # horizonal winning situ for player two
+            if (self.btn_1.text() == '*' and self.btn_2.text() == '*' and self.btn_3.text() == '*') or (self.btn_4.text() == '*' and self.btn_5.text() == '*' and self.btn_6.text() == '*') or (self.btn_7.text() == '*' and self.btn_8.text() == '*' and self.btn_9.text() == '*'):
+                print('second player won')
+
+            # vertical winning situ for player two
+            elif (self.btn_1.text() == '*' and self.btn_4.text() == '*' and self.btn_7.text() == '*') or (self.btn_2.text() == '*' and self.btn_5.text() == '*' and self.btn_8.text() == '*') or (self.btn_3.text() == '*' and self.btn_6.text() == '*' and self.btn_9.text() == '*'):
+                print('second player won')
+
+            # oblique winning situ for player two
+            elif (self.btn_1.text() == '*' and self.btn_5.text() == '*' and self.btn_9.text() == '*') or (self.btn_3.text() == '*' and self.btn_5.text() == '*' and self.btn_7.text() == '*'):
+                print('second player won')
+
+        
 
 
 # Run the app
