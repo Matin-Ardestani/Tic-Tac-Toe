@@ -1,6 +1,7 @@
 # import libraries
 from PyQt5 import QtCore, QtGui, QtWidgets
 from  PyQt5.QtWidgets import QMessageBox
+import random
 
 # main window class
 class Ui_MainWindow(object):
@@ -97,11 +98,13 @@ class Ui_MainWindow(object):
         self.oneplayermode_status = False
         self.twoplayermode_status = True
         self.click_counter = 0
-        self.twoPlayer_mode()
+        self.onePlayer_mode()
         self.actionOne_player.triggered.connect(lambda: [self.game_reset() , self.onePlayer_mode()])
         self.actionTwo_player.triggered.connect(lambda: [self.game_reset() , self.twoPlayer_mode()])
 
         self.btn_list = [self.btn_1, self.btn_2, self.btn_3, self.btn_4, self.btn_5, self.btn_6, self.btn_7, self.btn_8, self.btn_9]
+        self.btnedge_list = [self.btn_1, self.btn_3, self.btn_7, self.btn_9]
+        self.btnmiddle_list = [self.btn_2, self.btn_4, self.btn_6, self.btn_8]
 
         # change btn colors when the are disabled
         for btn in self.btn_list:
@@ -184,6 +187,28 @@ class Ui_MainWindow(object):
         self.oneplayermode_status = True
         self.twoplayermode_status = False
 
+        # do my move
+        if self.click_counter % 2 != 0: # check if it's my turn
+
+            # my first move ( corners )
+            if self.click_counter == 1:
+                # if the player's move was in corner
+                for pre_move in self.btnedge_list:
+                    if pre_move.isEnabled() == False:
+                        next_move = pre_move
+                        while next_move == pre_move:
+                            next_move = random.choice(self.btnedge_list)
+                        next_move.setText('*')
+                        next_move.setEnabled(False)
+                        break
+                
+                # if the player's move was in middle or center
+                for pre_move in self.btnmiddle_list:
+                    if (pre_move.isEnabled() == False) or (self.btn_5.isEnabled() == False):
+                        next_move = random.choice(self.btnedge_list)
+                        next_move.setText('*')
+                        next_move.setEnabled(False)
+                        break
         
 
 
