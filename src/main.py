@@ -1,5 +1,6 @@
 # import libraries
 from PyQt5 import QtCore, QtGui, QtWidgets
+from  PyQt5.QtWidgets import QMessageBox
 
 # main window class
 class Ui_MainWindow(object):
@@ -97,11 +98,13 @@ class Ui_MainWindow(object):
         self.twoplayermode_status = True
         self.click_counter = 0
         self.twoPlayer_mode()
-        self.actionOne_player.triggered.connect(self.onePlayer_mode)
-        self.actionTwo_player.triggered.connect(self.twoPlayer_mode)
+        self.actionOne_player.triggered.connect(lambda: [self.game_reset() , self.onePlayer_mode()])
+        self.actionTwo_player.triggered.connect(lambda: [self.game_reset() , self.twoPlayer_mode()])
+
+        self.btn_list = [self.btn_1, self.btn_2, self.btn_3, self.btn_4, self.btn_5, self.btn_6, self.btn_7, self.btn_8, self.btn_9]
 
         # change btn colors when the are disabled
-        for btn in [self.btn_1, self.btn_2, self.btn_3, self.btn_4, self.btn_5, self.btn_6, self.btn_7, self.btn_8, self.btn_9]:
+        for btn in self.btn_list:
             btn.setStyleSheet('''
                 QPushButton:disabled{
                     color: #000000;
@@ -150,6 +153,24 @@ class Ui_MainWindow(object):
             self.twoPlayer_mode()
 
 
+    # reset the game
+    def game_reset(self):
+        for btn in self.btn_list:
+            btn.setEnabled(True)
+            btn.setText('')
+
+    # show the winner
+    def show_winner(self, winner):
+        msg = QMessageBox()
+        msg.setWindowTitle('YOU WON!')
+        msg.setText('The player number %s won the game!     ' % winner.upper())
+        x = msg.exec_()
+
+        # reset the game
+        self.game_reset()
+
+
+    
 
     # one player mode
     def onePlayer_mode(self):
@@ -175,28 +196,28 @@ class Ui_MainWindow(object):
 
             # horizonal winning situ for player one
             if (self.btn_1.text() == 'O' and self.btn_2.text() == 'O' and self.btn_3.text() == 'O') or (self.btn_4.text() == 'O' and self.btn_5.text() == 'O' and self.btn_6.text() == 'O') or (self.btn_7.text() == 'O' and self.btn_8.text() == 'O' and self.btn_9.text() == 'O'):
-                print('first player won')
+                self.show_winner('one')
 
             # vertical winning situ for player one
             elif (self.btn_1.text() == 'O' and self.btn_4.text() == 'O' and self.btn_7.text() == 'O') or (self.btn_2.text() == 'O' and self.btn_5.text() == 'O' and self.btn_8.text() == 'O') or (self.btn_3.text() == 'O' and self.btn_6.text() == 'O' and self.btn_9.text() == 'O'):
-                print('first player won')
+                self.show_winner('one')
 
             # oblique winning situ for player one
             elif (self.btn_1.text() == 'O' and self.btn_5.text() == 'O' and self.btn_9.text() == 'O') or (self.btn_3.text() == 'O' and self.btn_5.text() == 'O' and self.btn_7.text() == 'O'):
-                print('second player won')
+                self.show_winner('one')
 
             
             # horizonal winning situ for player two
             if (self.btn_1.text() == '*' and self.btn_2.text() == '*' and self.btn_3.text() == '*') or (self.btn_4.text() == '*' and self.btn_5.text() == '*' and self.btn_6.text() == '*') or (self.btn_7.text() == '*' and self.btn_8.text() == '*' and self.btn_9.text() == '*'):
-                print('second player won')
+                self.show_winner('two')
 
             # vertical winning situ for player two
             elif (self.btn_1.text() == '*' and self.btn_4.text() == '*' and self.btn_7.text() == '*') or (self.btn_2.text() == '*' and self.btn_5.text() == '*' and self.btn_8.text() == '*') or (self.btn_3.text() == '*' and self.btn_6.text() == '*' and self.btn_9.text() == '*'):
-                print('second player won')
+                self.show_winner('two')
 
             # oblique winning situ for player two
             elif (self.btn_1.text() == '*' and self.btn_5.text() == '*' and self.btn_9.text() == '*') or (self.btn_3.text() == '*' and self.btn_5.text() == '*' and self.btn_7.text() == '*'):
-                print('second player won')
+                self.show_winner('two')
 
         
 
