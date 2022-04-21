@@ -165,7 +165,10 @@ class Ui_MainWindow(object):
     def show_winner(self, winner):
         msg = QMessageBox()
         msg.setWindowTitle('YOU WON!')
-        msg.setText('The player number %s won the game!     ' % winner.upper())
+        if winner == 'tie':
+            msg.setText('NO ONE won the game!')
+        else:
+            msg.setText('The player number %s won the game!     ' % winner.upper())
         x = msg.exec_()
 
         # reset the game
@@ -181,7 +184,6 @@ class Ui_MainWindow(object):
         self.oneplayermode_status = True
         self.twoplayermode_status = False
 
-        print('one')
         
 
 
@@ -220,6 +222,16 @@ class Ui_MainWindow(object):
             # oblique winning situ for player two
             elif (self.btn_1.text() == '*' and self.btn_5.text() == '*' and self.btn_9.text() == '*') or (self.btn_3.text() == '*' and self.btn_5.text() == '*' and self.btn_7.text() == '*'):
                 self.show_winner('two')
+
+            # no winner situ
+            else:
+                is_tie = True
+                for btn in self.btn_list:
+                    if btn.isEnabled() == True:
+                        is_tie = False
+                        break
+                if is_tie == True:
+                    self.show_winner('tie')
 
         
 
