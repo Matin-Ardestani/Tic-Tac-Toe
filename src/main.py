@@ -200,6 +200,7 @@ class Ui_MainWindow(object):
                             next_move = random.choice(self.btnedge_list)
                         next_move.setText('*')
                         next_move.setEnabled(False)
+                        self.click_counter += 1
                         break
                 
                 # if the player's move was in middle or center
@@ -208,6 +209,7 @@ class Ui_MainWindow(object):
                         next_move = random.choice(self.btnedge_list)
                         next_move.setText('*')
                         next_move.setEnabled(False)
+                        self.click_counter += 1
                         break
         
 
