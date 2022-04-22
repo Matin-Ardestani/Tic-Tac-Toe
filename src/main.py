@@ -3,6 +3,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from  PyQt5.QtWidgets import QMessageBox
 import random
 
+# - - -
+# 1|2|3
+# - - -
+# 4|5|6
+# - - -
+# 7|8|9
+# - - -
+
 # main window class
 class Ui_MainWindow(object):
     #==================================Designer's codes==================================
@@ -190,7 +198,7 @@ class Ui_MainWindow(object):
         # do my move
         if self.click_counter % 2 != 0: # check if it's my turn
 
-            # my first move ( corners )
+            # first move ( corners )
             if self.click_counter == 1:
                 # if the player's move was in corner
                 for pre_move in self.btnedge_list:
@@ -198,19 +206,110 @@ class Ui_MainWindow(object):
                         next_move = pre_move
                         while next_move == pre_move:
                             next_move = random.choice(self.btnedge_list)
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
                         break
                 
                 # if the player's move was in middle or center
                 for pre_move in self.btnmiddle_list:
                     if (pre_move.isEnabled() == False) or (self.btn_5.isEnabled() == False):
                         next_move = random.choice(self.btnedge_list)
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
                         break
+
+
+            # second move
+            elif self.click_counter == 3:
+                # first row situ (1,2,3)
+                if (self.btn_1.text() == 'O') and (self.btn_2.text() == 'O') and (self.btn_3.text() != 'O'): # (O,O, ) , (1,2,3)
+                    next_move = self.btn_3
+                    
+                elif (self.btn_1.text() == 'O') and (self.btn_2.text() != 'O') and (self.btn_3.text() == 'O'): # (O, ,O) , (1,2,3)
+                    next_move = self.btn_2
+                    
+                elif (self.btn_1.text() != 'O') and (self.btn_2.text() == 'O') and (self.btn_3.text() == 'O'): # ( ,O,O) , (1,2,3)
+                    next_move = self.btn_1
+                    
+
+                # second row situ (4,5,6)
+                elif (self.btn_4.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_6.text() != 'O'): # (O,O, ) , (4,5,6)
+                    next_move = self.btn_6
+                    
+                elif (self.btn_4.text() == 'O') and (self.btn_5.text() != 'O') and (self.btn_6.text() == 'O'): # (O, ,O) , (4,5,6)
+                    next_move = self.btn_5
+                    
+                elif (self.btn_4.text() != 'O') and (self.btn_5.text() == 'O') and (self.btn_6.text() == 'O'): # ( ,O,O) , (4,5,6)
+                    next_move = self.btn_4
+                    
+
+                # third row situ (7,8,9)
+                elif (self.btn_7.text() == 'O') and (self.btn_8.text() == 'O') and (self.btn_9.text() != 'O'): # (O,O, ) , (7,8,9)
+                    next_move = self.btn_9
+                    
+                elif (self.btn_7.text() == 'O') and (self.btn_8.text() != 'O') and (self.btn_9.text() == 'O'): # (O, ,O) , (7,8,9)
+                    next_move = self.btn_8
+                    
+                elif (self.btn_7.text() != 'O') and (self.btn_8.text() == 'O') and (self.btn_9.text() == 'O'): # ( ,O,O) , (7,8,9)
+                    next_move = self.btn_7
+
+                
+                # first column (1,3,7)
+                elif (self.btn_1.text() == 'O') and (self.btn_4.text() == 'O') and (self.btn_7.text() != 'O'): # (O,O, ) , (1,4,7)
+                    next_move = self.btn_7
+
+                elif (self.btn_1.text() == 'O') and (self.btn_4.text() != 'O') and (self.btn_7.text() == 'O'): # (O, ,O) , (1,4,7)
+                    next_move = self.btn_4
+
+                elif (self.btn_1.text() != 'O') and (self.btn_4.text() == 'O') and (self.btn_7.text() == 'O'): # ( ,O,O) , (1,4,7)
+                    next_move = self.btn_1
+
+
+                # second column (2,5,8)
+                elif (self.btn_2.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_8.text() != 'O'): # (O,O, ) , (2,5,8)
+                    next_move = self.btn_8
+
+                elif (self.btn_2.text() == 'O') and (self.btn_5.text() != 'O') and (self.btn_8.text() == 'O'): # (O, ,O) , (2,5,8)
+                    next_move = self.btn_5
+
+                elif (self.btn_2.text() != 'O') and (self.btn_5.text() == 'O') and (self.btn_8.text() == 'O'): # ( ,O,O) , (2,5,8)
+                    next_move = self.btn_2
+
+
+                # third column (3,6,9)
+                elif (self.btn_3.text() == 'O') and (self.btn_6.text() == 'O') and (self.btn_9.text() != 'O'): # (O,O, ) , (3,6,9)
+                    next_move = self.btn_9
+
+                elif (self.btn_3.text() == 'O') and (self.btn_6.text() != 'O') and (self.btn_9.text() == 'O'): # (O, ,O) , (3,6,9)
+                    next_move = self.btn_6
+
+                elif (self.btn_3.text() != 'O') and (self.btn_6.text() == 'O') and (self.btn_9.text() == 'O'): # ( ,O,O) , (3,6,9)
+                    next_move = self.btn_3
+
+
+                # oblique situ one (1,5,9)
+                elif (self.btn_1.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_9.text() != 'O'): # (O,O, ) , (1,5,9)
+                    next_move = self.btn_9
+
+                elif (self.btn_1.text() == 'O') and (self.btn_5.text() != 'O') and (self.btn_9.text() == 'O'): # (O, ,O) , (1,5,9)
+                    next_move = self.btn_5
+
+                elif (self.btn_1.text() != 'O') and (self.btn_5.text() == 'O') and (self.btn_9.text() == 'O'): # ( ,O,O) , (1,5,9)
+                    next_move = self.btn_1
+
+
+                # oblique situ two (3,5,7)
+                elif (self.btn_3.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_7.text() != 'O'): # (O,O, ) , (3,5,7)
+                    next_move = self.btn_7
+
+                elif (self.btn_3.text() == 'O') and (self.btn_5.text() != 'O') and (self.btn_7.text() == 'O'): # (O, ,O) , (3,5,7)
+                    next_move = self.btn_5
+
+                elif (self.btn_3.text() != 'O') and (self.btn_5.text() == 'O') and (self.btn_7.text() == 'O'): # ( ,O,O) , (3,5,7)
+                    next_move = self.btn_3
+                    
+            
+            
+            # show the move
+            next_move.setText('*')
+            next_move.setEnabled(False)
+            self.click_counter += 1
         
 
 
