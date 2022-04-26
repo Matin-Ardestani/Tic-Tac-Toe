@@ -385,10 +385,79 @@ class Ui_MainWindow(object):
 
 
                 # no danger ( you can move for winning not stop losing )
-                # else:
-                    # when the row,column or oblique has a free place to move
-                    
-                    # first row (1,2,3)
+                else:
+                    # first edge (1)
+                    if self.btn_1.text() == '*':
+                        if (self.btn_2.isEnabled() == True) and (self.btn_3.isEnabled() == True): # vertical
+                            next_move = self.btn_3
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_4.isEnabled() == True) and (self.btn_7.isEnabled() == True): # horizontal
+                            next_move = self.btn_7
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_5.isEnabled() == True) and (self.btn_9.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+
+                    # second edge (3)
+                    if self.btn_3.text() == '*':
+                        if (self.btn_2.isEnabled() == True) and (self.btn_1.isEnabled() == True): # vertical
+                            next_move = self.btn_1
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_6.isEnabled() == True) and (self.btn_9.isEnabled() == True): # horizontal
+                            next_move = self.btn_9
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_5.isEnabled() == True) and (self.btn_7.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+
+                    # third edge (7)
+                    if self.btn_7.text() == '*':
+                        if (self.btn_4.isEnabled() == True) and (self.btn_1.isEnabled() == True): # vertical
+                            next_move = self.btn_1
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_8.isEnabled() == True) and (self.btn_9.isEnabled() == True): # horizontal
+                            next_move = self.btn_9
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_5.isEnabled() == True) and (self.btn_3.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+
+                    # forth edge (9)
+                    if self.btn_9.text() == '*':
+                        if (self.btn_6.isEnabled() == True) and (self.btn_3.isEnabled() == True): # vertical
+                            next_move = self.btn_3
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_8.isEnabled() == True) and (self.btn_7.isEnabled() == True): # horizontal
+                            next_move = self.btn_7
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_5.isEnabled() == True) and (self.btn_1.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                            
                     
 
                 
@@ -419,7 +488,7 @@ class Ui_MainWindow(object):
         # check if we have a winnner
         if self.click_counter >= 5: # there have to be at least 5 clickes to have a winner
 
-            # horizonal winning situ for player one
+            # horizontal winning situ for player one
             if (self.btn_1.text() == 'O' and self.btn_2.text() == 'O' and self.btn_3.text() == 'O') or (self.btn_4.text() == 'O' and self.btn_5.text() == 'O' and self.btn_6.text() == 'O') or (self.btn_7.text() == 'O' and self.btn_8.text() == 'O' and self.btn_9.text() == 'O'):
                 self.show_winner('one')
 
@@ -432,7 +501,7 @@ class Ui_MainWindow(object):
                 self.show_winner('one')
 
             
-            # horizonal winning situ for player two
+            # horizontal winning situ for player two
             if (self.btn_1.text() == '*' and self.btn_2.text() == '*' and self.btn_3.text() == '*') or (self.btn_4.text() == '*' and self.btn_5.text() == '*' and self.btn_6.text() == '*') or (self.btn_7.text() == '*' and self.btn_8.text() == '*' and self.btn_9.text() == '*'):
                 self.show_winner('two')
 
