@@ -186,6 +186,59 @@ class Ui_MainWindow(object):
         self.game_reset()
 
 
+
+    def check_winning(self):
+
+
+        # show the winner
+        def show_winner(winner):
+            msg = QMessageBox()
+            msg.setWindowTitle('YOU WON!')
+            if winner == 'tie':
+                msg.setText('NO ONE won the game!')
+            else:
+                msg.setText('The player number %s won the game!     ' % winner.upper())
+            x = msg.exec_()
+
+            # reset the game
+            self.game_reset()
+
+
+        # horizontal winning situ for player one
+        if (self.btn_1.text() == 'O' and self.btn_2.text() == 'O' and self.btn_3.text() == 'O') or (self.btn_4.text() == 'O' and self.btn_5.text() == 'O' and self.btn_6.text() == 'O') or (self.btn_7.text() == 'O' and self.btn_8.text() == 'O' and self.btn_9.text() == 'O'):
+            show_winner('one')
+
+        # vertical winning situ for player one
+        elif (self.btn_1.text() == 'O' and self.btn_4.text() == 'O' and self.btn_7.text() == 'O') or (self.btn_2.text() == 'O' and self.btn_5.text() == 'O' and self.btn_8.text() == 'O') or (self.btn_3.text() == 'O' and self.btn_6.text() == 'O' and self.btn_9.text() == 'O'):
+            show_winner('one')
+
+        # oblique winning situ for player one
+        elif (self.btn_1.text() == 'O' and self.btn_5.text() == 'O' and self.btn_9.text() == 'O') or (self.btn_3.text() == 'O' and self.btn_5.text() == 'O' and self.btn_7.text() == 'O'):
+            show_winner('one')
+
+            
+        # horizontal winning situ for player two
+        if (self.btn_1.text() == '*' and self.btn_2.text() == '*' and self.btn_3.text() == '*') or (self.btn_4.text() == '*' and self.btn_5.text() == '*' and self.btn_6.text() == '*') or (self.btn_7.text() == '*' and self.btn_8.text() == '*' and self.btn_9.text() == '*'):
+            show_winner('two')
+
+        # vertical winning situ for player two
+        elif (self.btn_1.text() == '*' and self.btn_4.text() == '*' and self.btn_7.text() == '*') or (self.btn_2.text() == '*' and self.btn_5.text() == '*' and self.btn_8.text() == '*') or (self.btn_3.text() == '*' and self.btn_6.text() == '*' and self.btn_9.text() == '*'):
+             show_winner('two')
+
+        # oblique winning situ for player two
+        elif (self.btn_1.text() == '*' and self.btn_5.text() == '*' and self.btn_9.text() == '*') or (self.btn_3.text() == '*' and self.btn_5.text() == '*' and self.btn_7.text() == '*'):
+            show_winner('two')
+
+        # no winner situ
+        else:
+            is_tie = True
+            for btn in self.btn_list:
+                if btn.isEnabled() == True:
+                    is_tie = False
+                    break
+            if is_tie == True:
+                show_winner('tie')
+
     
 
     # one player mode
@@ -487,41 +540,8 @@ class Ui_MainWindow(object):
 
         # check if we have a winnner
         if self.click_counter >= 5: # there have to be at least 5 clickes to have a winner
-
-            # horizontal winning situ for player one
-            if (self.btn_1.text() == 'O' and self.btn_2.text() == 'O' and self.btn_3.text() == 'O') or (self.btn_4.text() == 'O' and self.btn_5.text() == 'O' and self.btn_6.text() == 'O') or (self.btn_7.text() == 'O' and self.btn_8.text() == 'O' and self.btn_9.text() == 'O'):
-                self.show_winner('one')
-
-            # vertical winning situ for player one
-            elif (self.btn_1.text() == 'O' and self.btn_4.text() == 'O' and self.btn_7.text() == 'O') or (self.btn_2.text() == 'O' and self.btn_5.text() == 'O' and self.btn_8.text() == 'O') or (self.btn_3.text() == 'O' and self.btn_6.text() == 'O' and self.btn_9.text() == 'O'):
-                self.show_winner('one')
-
-            # oblique winning situ for player one
-            elif (self.btn_1.text() == 'O' and self.btn_5.text() == 'O' and self.btn_9.text() == 'O') or (self.btn_3.text() == 'O' and self.btn_5.text() == 'O' and self.btn_7.text() == 'O'):
-                self.show_winner('one')
-
+            self.check_winning()
             
-            # horizontal winning situ for player two
-            if (self.btn_1.text() == '*' and self.btn_2.text() == '*' and self.btn_3.text() == '*') or (self.btn_4.text() == '*' and self.btn_5.text() == '*' and self.btn_6.text() == '*') or (self.btn_7.text() == '*' and self.btn_8.text() == '*' and self.btn_9.text() == '*'):
-                self.show_winner('two')
-
-            # vertical winning situ for player two
-            elif (self.btn_1.text() == '*' and self.btn_4.text() == '*' and self.btn_7.text() == '*') or (self.btn_2.text() == '*' and self.btn_5.text() == '*' and self.btn_8.text() == '*') or (self.btn_3.text() == '*' and self.btn_6.text() == '*' and self.btn_9.text() == '*'):
-                self.show_winner('two')
-
-            # oblique winning situ for player two
-            elif (self.btn_1.text() == '*' and self.btn_5.text() == '*' and self.btn_9.text() == '*') or (self.btn_3.text() == '*' and self.btn_5.text() == '*' and self.btn_7.text() == '*'):
-                self.show_winner('two')
-
-            # no winner situ
-            else:
-                is_tie = True
-                for btn in self.btn_list:
-                    if btn.isEnabled() == True:
-                        is_tie = False
-                        break
-                if is_tie == True:
-                    self.show_winner('tie')
 
         
 
