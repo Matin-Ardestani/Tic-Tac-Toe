@@ -458,7 +458,7 @@ class Ui_MainWindow(object):
                             self.click_counter += 1
 
                     # second edge (3)
-                    if self.btn_3.text() == '*':
+                    elif self.btn_3.text() == '*':
                         if (self.btn_2.isEnabled() == True) and (self.btn_1.isEnabled() == True): # vertical
                             next_move = self.btn_1
                             next_move.setText('*')
@@ -476,7 +476,7 @@ class Ui_MainWindow(object):
                             self.click_counter += 1
 
                     # third edge (7)
-                    if self.btn_7.text() == '*':
+                    elif self.btn_7.text() == '*':
                         if (self.btn_4.isEnabled() == True) and (self.btn_1.isEnabled() == True): # vertical
                             next_move = self.btn_1
                             next_move.setText('*')
@@ -494,7 +494,7 @@ class Ui_MainWindow(object):
                             self.click_counter += 1
 
                     # forth edge (9)
-                    if self.btn_9.text() == '*':
+                    elif self.btn_9.text() == '*':
                         if (self.btn_6.isEnabled() == True) and (self.btn_3.isEnabled() == True): # vertical
                             next_move = self.btn_3
                             next_move.setText('*')
@@ -513,7 +513,7 @@ class Ui_MainWindow(object):
                             
                     
 
-                
+            
                     
             
 
@@ -586,7 +586,7 @@ class Ui_MainWindow(object):
                 self.check_winning() # check if the game is over
 
 
-            
+
             # show the move
             # next_move.setText('*')
             # next_move.setEnabled(False)
