@@ -248,6 +248,171 @@ class Ui_MainWindow(object):
         self.oneplayermode_status = True
         self.twoplayermode_status = False
 
+        # prevent from losing situations
+        def prevent_losing():
+            # first row situ (1,2,3)
+            if (self.btn_1.text() == 'O') and (self.btn_2.text() == 'O') and (self.btn_3.text() != 'O' and self.btn_3.isEnabled() == True): # (O,O, ) , (1,2,3)
+                next_move = self.btn_3
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+                
+                
+            elif (self.btn_1.text() == 'O') and (self.btn_2.text() != 'O' and self.btn_2.isEnabled() == True) and (self.btn_3.text() == 'O'): # (O, ,O) , (1,2,3)
+                next_move = self.btn_2
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+                
+            elif (self.btn_1.text() != 'O' and self.btn_1.isEnabled() == True) and (self.btn_2.text() == 'O') and (self.btn_3.text() == 'O'): # ( ,O,O) , (1,2,3)
+                next_move = self.btn_1
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+                
+
+            # second row situ (4,5,6)
+            elif (self.btn_4.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_6.text() != 'O' and self.btn_6.isEnabled() == True): # (O,O, ) , (4,5,6)
+                next_move = self.btn_6
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+                
+            elif (self.btn_4.text() == 'O') and (self.btn_5.text() != 'O' and self.btn_5.isEnabled() == True) and (self.btn_6.text() == 'O'): # (O, ,O) , (4,5,6)
+                next_move = self.btn_5
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+                
+            elif (self.btn_4.text() != 'O' and self.btn_4.isEnabled() == True) and (self.btn_5.text() == 'O') and (self.btn_6.text() == 'O'): # ( ,O,O) , (4,5,6)
+                next_move = self.btn_4
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+                
+
+            # third row situ (7,8,9)
+            elif (self.btn_7.text() == 'O') and (self.btn_8.text() == 'O') and (self.btn_9.text() != 'O' and self.btn_9.isEnabled() == True): # (O,O, ) , (7,8,9)
+                next_move = self.btn_9
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+                
+            elif (self.btn_7.text() == 'O') and (self.btn_8.text() != 'O' and self.btn_8.isEnabled() == True) and (self.btn_9.text() == 'O'): # (O, ,O) , (7,8,9)
+                next_move = self.btn_8
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+                
+            elif (self.btn_7.text() != 'O' and self.btn_7.isEnabled() == True) and (self.btn_8.text() == 'O') and (self.btn_9.text() == 'O'): # ( ,O,O) , (7,8,9)
+                next_move = self.btn_7
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            
+            # first column (1,3,7)
+            elif (self.btn_1.text() == 'O') and (self.btn_4.text() == 'O') and (self.btn_7.text() != 'O' and self.btn_7.isEnabled() == True): # (O,O, ) , (1,4,7)
+                next_move = self.btn_7
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            elif (self.btn_1.text() == 'O') and (self.btn_4.text() != 'O' and self.btn_4.isEnabled() == True) and (self.btn_7.text() == 'O'): # (O, ,O) , (1,4,7)
+                next_move = self.btn_4
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            elif (self.btn_1.text() != 'O' and self.btn_1.isEnabled() == True) and (self.btn_4.text() == 'O') and (self.btn_7.text() == 'O'): # ( ,O,O) , (1,4,7)
+                next_move = self.btn_1
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+
+            # second column (2,5,8)
+            elif (self.btn_2.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_8.text() != 'O' and self.btn_8.isEnabled() == True): # (O,O, ) , (2,5,8)
+                next_move = self.btn_8
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            elif (self.btn_2.text() == 'O') and (self.btn_5.text() != 'O' and self.btn_5.isEnabled() == True) and (self.btn_8.text() == 'O'): # (O, ,O) , (2,5,8)
+                next_move = self.btn_5
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            elif (self.btn_2.text() != 'O' and self.btn_2.isEnabled() == True) and (self.btn_5.text() == 'O') and (self.btn_8.text() == 'O'): # ( ,O,O) , (2,5,8)
+                next_move = self.btn_2
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+
+            # third column (3,6,9)
+            elif (self.btn_3.text() == 'O') and (self.btn_6.text() == 'O') and (self.btn_9.text() != 'O' and self.btn_9.isEnabled() == True): # (O,O, ) , (3,6,9)
+                next_move = self.btn_9
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            elif (self.btn_3.text() == 'O') and (self.btn_6.text() != 'O'  and self.btn_6.isEnabled() == True) and (self.btn_9.text() == 'O'): # (O, ,O) , (3,6,9)
+                next_move = self.btn_6
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            elif (self.btn_3.text() != 'O' and self.btn_3.isEnabled() == True) and (self.btn_6.text() == 'O') and (self.btn_9.text() == 'O'): # ( ,O,O) , (3,6,9)
+                next_move = self.btn_3
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+
+            # oblique situ one (1,5,9)
+            elif (self.btn_1.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_9.text() != 'O' and self.btn_9.isEnabled() == True): # (O,O, ) , (1,5,9)
+                next_move = self.btn_9
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            elif (self.btn_1.text() == 'O') and (self.btn_5.text() != 'O' and self.btn_5.isEnabled() == True) and (self.btn_9.text() == 'O'): # (O, ,O) , (1,5,9)
+                next_move = self.btn_5
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            elif (self.btn_1.text() != 'O' and self.btn_1.isEnabled() == True) and (self.btn_5.text() == 'O') and (self.btn_9.text() == 'O'): # ( ,O,O) , (1,5,9)
+                next_move = self.btn_1
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+
+            # oblique situ two (3,5,7)
+            elif (self.btn_3.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_7.text() != 'O' and self.btn_7.isEnabled() == True): # (O,O, ) , (3,5,7)
+                next_move = self.btn_7
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            elif (self.btn_3.text() == 'O') and (self.btn_5.text() != 'O' and self.btn_5.isEnabled() == True) and (self.btn_7.text() == 'O'): # (O, ,O) , (3,5,7)
+                next_move = self.btn_5
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            elif (self.btn_3.text() != 'O' and self.btn_3.isEnabled() == True) and (self.btn_5.text() == 'O') and (self.btn_7.text() == 'O'): # ( ,O,O) , (3,5,7)
+                next_move = self.btn_3
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            else:
+                return True
+
         # do my move
         if self.click_counter % 2 != 0: # check if it's my turn
 
@@ -276,169 +441,8 @@ class Ui_MainWindow(object):
 
             # ----------------------second move
             elif self.click_counter == 3:
-                # first row situ (1,2,3)
-                if (self.btn_1.text() == 'O') and (self.btn_2.text() == 'O') and (self.btn_3.text() != 'O' and self.btn_3.isEnabled() == True): # (O,O, ) , (1,2,3)
-                    next_move = self.btn_3
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                    
-                    
-                elif (self.btn_1.text() == 'O') and (self.btn_2.text() != 'O' and self.btn_2.isEnabled() == True) and (self.btn_3.text() == 'O'): # (O, ,O) , (1,2,3)
-                    next_move = self.btn_2
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                    
-                elif (self.btn_1.text() != 'O' and self.btn_1.isEnabled() == True) and (self.btn_2.text() == 'O') and (self.btn_3.text() == 'O'): # ( ,O,O) , (1,2,3)
-                    next_move = self.btn_1
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                    
-
-                # second row situ (4,5,6)
-                elif (self.btn_4.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_6.text() != 'O' and self.btn_6.isEnabled() == True): # (O,O, ) , (4,5,6)
-                    next_move = self.btn_6
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                    
-                elif (self.btn_4.text() == 'O') and (self.btn_5.text() != 'O' and self.btn_5.isEnabled() == True) and (self.btn_6.text() == 'O'): # (O, ,O) , (4,5,6)
-                    next_move = self.btn_5
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                    
-                elif (self.btn_4.text() != 'O' and self.btn_4.isEnabled() == True) and (self.btn_5.text() == 'O') and (self.btn_6.text() == 'O'): # ( ,O,O) , (4,5,6)
-                    next_move = self.btn_4
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                    
-
-                # third row situ (7,8,9)
-                elif (self.btn_7.text() == 'O') and (self.btn_8.text() == 'O') and (self.btn_9.text() != 'O' and self.btn_9.isEnabled() == True): # (O,O, ) , (7,8,9)
-                    next_move = self.btn_9
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                    
-                elif (self.btn_7.text() == 'O') and (self.btn_8.text() != 'O' and self.btn_8.isEnabled() == True) and (self.btn_9.text() == 'O'): # (O, ,O) , (7,8,9)
-                    next_move = self.btn_8
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                    
-                elif (self.btn_7.text() != 'O' and self.btn_7.isEnabled() == True) and (self.btn_8.text() == 'O') and (self.btn_9.text() == 'O'): # ( ,O,O) , (7,8,9)
-                    next_move = self.btn_7
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                
-                # first column (1,3,7)
-                elif (self.btn_1.text() == 'O') and (self.btn_4.text() == 'O') and (self.btn_7.text() != 'O' and self.btn_7.isEnabled() == True): # (O,O, ) , (1,4,7)
-                    next_move = self.btn_7
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                elif (self.btn_1.text() == 'O') and (self.btn_4.text() != 'O' and self.btn_4.isEnabled() == True) and (self.btn_7.text() == 'O'): # (O, ,O) , (1,4,7)
-                    next_move = self.btn_4
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                elif (self.btn_1.text() != 'O' and self.btn_1.isEnabled() == True) and (self.btn_4.text() == 'O') and (self.btn_7.text() == 'O'): # ( ,O,O) , (1,4,7)
-                    next_move = self.btn_1
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-
-                # second column (2,5,8)
-                elif (self.btn_2.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_8.text() != 'O' and self.btn_8.isEnabled() == True): # (O,O, ) , (2,5,8)
-                    next_move = self.btn_8
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                elif (self.btn_2.text() == 'O') and (self.btn_5.text() != 'O' and self.btn_5.isEnabled() == True) and (self.btn_8.text() == 'O'): # (O, ,O) , (2,5,8)
-                    next_move = self.btn_5
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                elif (self.btn_2.text() != 'O' and self.btn_2.isEnabled() == True) and (self.btn_5.text() == 'O') and (self.btn_8.text() == 'O'): # ( ,O,O) , (2,5,8)
-                    next_move = self.btn_2
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-
-                # third column (3,6,9)
-                elif (self.btn_3.text() == 'O') and (self.btn_6.text() == 'O') and (self.btn_9.text() != 'O' and self.btn_9.isEnabled() == True): # (O,O, ) , (3,6,9)
-                    next_move = self.btn_9
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                elif (self.btn_3.text() == 'O') and (self.btn_6.text() != 'O'  and self.btn_6.isEnabled() == True) and (self.btn_9.text() == 'O'): # (O, ,O) , (3,6,9)
-                    next_move = self.btn_6
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                elif (self.btn_3.text() != 'O' and self.btn_3.isEnabled() == True) and (self.btn_6.text() == 'O') and (self.btn_9.text() == 'O'): # ( ,O,O) , (3,6,9)
-                    next_move = self.btn_3
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-
-                # oblique situ one (1,5,9)
-                elif (self.btn_1.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_9.text() != 'O' and self.btn_9.isEnabled() == True): # (O,O, ) , (1,5,9)
-                    next_move = self.btn_9
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                elif (self.btn_1.text() == 'O') and (self.btn_5.text() != 'O' and self.btn_5.isEnabled() == True) and (self.btn_9.text() == 'O'): # (O, ,O) , (1,5,9)
-                    next_move = self.btn_5
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                elif (self.btn_1.text() != 'O' and self.btn_1.isEnabled() == True) and (self.btn_5.text() == 'O') and (self.btn_9.text() == 'O'): # ( ,O,O) , (1,5,9)
-                    next_move = self.btn_1
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-
-                # oblique situ two (3,5,7)
-                elif (self.btn_3.text() == 'O') and (self.btn_5.text() == 'O') and (self.btn_7.text() != 'O' and self.btn_7.isEnabled() == True): # (O,O, ) , (3,5,7)
-                    next_move = self.btn_7
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                elif (self.btn_3.text() == 'O') and (self.btn_5.text() != 'O' and self.btn_5.isEnabled() == True) and (self.btn_7.text() == 'O'): # (O, ,O) , (3,5,7)
-                    next_move = self.btn_5
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                elif (self.btn_3.text() != 'O' and self.btn_3.isEnabled() == True) and (self.btn_5.text() == 'O') and (self.btn_7.text() == 'O'): # ( ,O,O) , (3,5,7)
-                    next_move = self.btn_3
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-
-                # no danger ( you can move for winning not stop losing )
-                else:
+                # prevent losing the game
+                if prevent_losing() == True: # no danger ( you can move for winning not stop losing )
                     # first edge (1)
                     if self.btn_1.text() == '*':
                         if (self.btn_2.isEnabled() == True) and (self.btn_3.isEnabled() == True): # vertical
@@ -583,6 +587,13 @@ class Ui_MainWindow(object):
                     self.click_counter += 1
                 
                 
+                # prevent losing the game
+                else:
+                    prevent_losing()
+
+
+
+
                 self.check_winning() # check if the game is over
 
 
