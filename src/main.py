@@ -588,8 +588,104 @@ class Ui_MainWindow(object):
                 
                 
                 # prevent losing the game
-                else:
-                    prevent_losing()
+                elif prevent_losing() == True:
+                    # first edge (1)
+                    if self.btn_1.text() == '*':
+                        if (self.btn_2.isEnabled() == True) and (self.btn_3.isEnabled() == True): # vertical
+                            next_move = self.btn_3
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_4.isEnabled() == True) and (self.btn_7.isEnabled() == True): # horizontal
+                            next_move = self.btn_7
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_5.isEnabled() == True) and (self.btn_9.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+
+                    # second edge (3)
+                    elif self.btn_3.text() == '*':
+                        if (self.btn_2.isEnabled() == True) and (self.btn_1.isEnabled() == True): # vertical
+                            next_move = self.btn_1
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_6.isEnabled() == True) and (self.btn_9.isEnabled() == True): # horizontal
+                            next_move = self.btn_9
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_5.isEnabled() == True) and (self.btn_7.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+
+                    # third edge (7)
+                    elif self.btn_7.text() == '*':
+                        if (self.btn_4.isEnabled() == True) and (self.btn_1.isEnabled() == True): # vertical
+                            next_move = self.btn_1
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_8.isEnabled() == True) and (self.btn_9.isEnabled() == True): # horizontal
+                            next_move = self.btn_9
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_5.isEnabled() == True) and (self.btn_3.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+
+                    # forth edge (9)
+                    elif self.btn_9.text() == '*':
+                        if (self.btn_6.isEnabled() == True) and (self.btn_3.isEnabled() == True): # vertical
+                            next_move = self.btn_3
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_8.isEnabled() == True) and (self.btn_7.isEnabled() == True): # horizontal
+                            next_move = self.btn_7
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_5.isEnabled() == True) and (self.btn_1.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+
+                    # center (5)
+                    elif self.btn_5.text() == '*':
+                        if (self.btn_2.isEnabled() == True) and (self.btn_8.isEnabled() == True): # vertical
+                            if (self.btn_1.text() == '*') or (self.btn_3.text() == '*'):
+                                next_move = self.btn_2
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                            elif (self.btn_7.text() == '*') or (self.btn_6.text() == '*'):
+                                next_move = self.btn_8
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                        elif (self.btn_4.isEnabled() == True) and (self.btn_6.isEnabled() == True):
+                            if (self.btn_1.text() == '*') or (self.btn_7.text() == '*'):
+                                next_move = self.btn_4
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                            elif (self.btn_3.text() == '*') or (self.btn_9.text() == '*'):
+                                next_move = self.btn_6
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                        
 
 
 
