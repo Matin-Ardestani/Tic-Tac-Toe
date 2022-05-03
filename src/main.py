@@ -735,6 +735,88 @@ class Ui_MainWindow(object):
 
 
 
+            # ----------------------forth move
+            elif self.click_counter == 7:
+                
+                # check if you can win the game
+                # first row (1,2,3)
+                if (self.btn_1.text() == '*') and (self.btn_3.text() == '*') and (self.btn_2.isEnabled() == True):
+                    next_move = self.btn_2
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                # third row (7,8,9)
+                elif (self.btn_7.text() == '*') and (self.btn_9.text() == '*') and (self.btn_8.isEnabled() == True):
+                    next_move = self.btn_8
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                
+                # first column (1,4,7)
+                elif (self.btn_1.text() == '*') and (self.btn_7.text() == '*') and (self.btn_4.isEnabled() == True):
+                    next_move = self.btn_4
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                # third column (3,6,9)
+                elif (self.btn_3.text() == '*') and (self.btn_9.text() == '*') and (self.btn_6.isEnabled() == True):
+                    next_move = self.btn_6
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+
+                # first oblique (1,5,9)
+                elif (self.btn_1.text() == '*') and (self.btn_5.text() == '*') and (self.btn_9.isEnabled() == True): # (1,5, )
+                    next_move = self.btn_9
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                elif (self.btn_1.text() == '*') and (self.btn_9.text() == '*') and (self.btn_5.isEnabled() == True): # (1, ,9)
+                    next_move = self.btn_5
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                elif (self.btn_5.text() == '*') and (self.btn_9.text() == '*') and (self.btn_1.isEnabled() == True): # ( ,5,9)
+                    next_move = self.btn_1
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                # second oblique (3,5,7)
+                elif (self.btn_3.text() == '*') and (self.btn_5.text() == '*') and (self.btn_7.isEnabled() == True):
+                    next_move = self.btn_7
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                elif (self.btn_3.text() == '*') and (self.btn_7.text() == '*') and (self.btn_5.isEnabled() == True):
+                    next_move = self.btn_5
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                elif (self.btn_5.text() == '*') and (self.btn_7.text() == '*') and (self.btn_3.isEnabled() == True):
+                    next_move = self.btn_3
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+
+                else:
+                    if prevent_losing() == True:
+                        next_move = self.btn_1
+                        while next_move.isEnabled() == False:
+                            next_move = random.choice(self.btn_list)
+
+                        next_move.setText('*')
+                        next_move.setEnabled(False)
+                        self.click_counter += 1
+                        
+
+                self.check_winning()
+
+
+
+
+
+
+
             # show the move
             # next_move.setText('*')
             # next_move.setEnabled(False)
