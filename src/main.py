@@ -817,8 +817,9 @@ class Ui_MainWindow(object):
                 self.check_winning()
 
 
-
-
+            # ----------------------fifth move ( for the competiter )
+            elif self.click_counter == 9:
+                self.check_winning()
 
 
             # show the move
