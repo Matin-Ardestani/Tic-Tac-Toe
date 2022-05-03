@@ -248,6 +248,110 @@ class Ui_MainWindow(object):
         self.oneplayermode_status = True
         self.twoplayermode_status = False
 
+
+        def winning_move():
+            # check if you can win the game
+            # first row (1,2,3)
+            if (self.btn_1.text() == '*') and (self.btn_3.text() == '*') and (self.btn_2.isEnabled() == True):
+                next_move = self.btn_2
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_1.text() == '*') and (self.btn_2.text() == '*') and (self.btn_3.isEnabled() == True):
+                next_move = self.btn_3
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_2.text() == '*') and (self.btn_3.text() == '*') and (self.btn_1.isEnabled() == True):
+                next_move = self.btn_1
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            # third row (7,8,9)
+            elif (self.btn_7.text() == '*') and (self.btn_9.text() == '*') and (self.btn_8.isEnabled() == True):
+                next_move = self.btn_8
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_7.text() == '*') and (self.btn_8.text() == '*') and (self.btn_9.isEnabled() == True):
+                next_move = self.btn_9
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_8.text() == '*') and (self.btn_9.text() == '*') and (self.btn_7.isEnabled() == True):
+                next_move = self.btn_7
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            
+            # first column (1,4,7)
+            elif (self.btn_1.text() == '*') and (self.btn_7.text() == '*') and (self.btn_4.isEnabled() == True):
+                next_move = self.btn_4
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_1.text() == '*') and (self.btn_4.text() == '*') and (self.btn_7.isEnabled() == True):
+                next_move = self.btn_7
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_4.text() == '*') and (self.btn_7.text() == '*') and (self.btn_1.isEnabled() == True):
+                next_move = self.btn_1
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            # third column (3,6,9)
+            elif (self.btn_3.text() == '*') and (self.btn_9.text() == '*') and (self.btn_6.isEnabled() == True):
+                next_move = self.btn_6
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_3.text() == '*') and (self.btn_6.text() == '*') and (self.btn_9.isEnabled() == True):
+                next_move = self.btn_9
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_6.text() == '*') and (self.btn_9.text() == '*') and (self.btn_3.isEnabled() == True):
+                next_move = self.btn_3
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+
+            # first oblique (1,5,9)
+            elif (self.btn_1.text() == '*') and (self.btn_5.text() == '*') and (self.btn_9.isEnabled() == True): # (1,5, )
+                next_move = self.btn_9
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_1.text() == '*') and (self.btn_9.text() == '*') and (self.btn_5.isEnabled() == True): # (1, ,9)
+                next_move = self.btn_5
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_5.text() == '*') and (self.btn_9.text() == '*') and (self.btn_1.isEnabled() == True): # ( ,5,9)
+                next_move = self.btn_1
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            # second oblique (3,5,7)
+            elif (self.btn_3.text() == '*') and (self.btn_5.text() == '*') and (self.btn_7.isEnabled() == True):
+                next_move = self.btn_7
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_3.text() == '*') and (self.btn_7.text() == '*') and (self.btn_5.isEnabled() == True):
+                next_move = self.btn_5
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            elif (self.btn_5.text() == '*') and (self.btn_7.text() == '*') and (self.btn_3.isEnabled() == True):
+                next_move = self.btn_3
+                next_move.setText('*')
+                next_move.setEnabled(False)
+                self.click_counter += 1
+            else:
+                return False # cannot win
+
         # prevent from losing situations
         def prevent_losing():
             # first row situ (1,2,3)
@@ -519,268 +623,170 @@ class Ui_MainWindow(object):
             # ----------------------third move
             elif self.click_counter == 5:
 
-                # check if you can win the game
-                # first row (1,2,3)
-                if (self.btn_1.text() == '*') and (self.btn_3.text() == '*') and (self.btn_2.isEnabled() == True):
-                    next_move = self.btn_2
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_1.text() == '*') and (self.btn_2.text() == '*') and (self.btn_3.isEnabled() == True):
-                    next_move = self.btn_3
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_2.text() == '*') and (self.btn_3.text() == '*') and (self.btn_1.isEnabled() == True):
-                    next_move = self.btn_1
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                # third row (7,8,9)
-                elif (self.btn_7.text() == '*') and (self.btn_9.text() == '*') and (self.btn_8.isEnabled() == True):
-                    next_move = self.btn_8
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_7.text() == '*') and (self.btn_8.text() == '*') and (self.btn_9.isEnabled() == True):
-                    next_move = self.btn_9
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_8.text() == '*') and (self.btn_9.text() == '*') and (self.btn_7.isEnabled() == True):
-                    next_move = self.btn_7
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
                 
-                # first column (1,4,7)
-                elif (self.btn_1.text() == '*') and (self.btn_7.text() == '*') and (self.btn_4.isEnabled() == True):
-                    next_move = self.btn_4
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_1.text() == '*') and (self.btn_4.text() == '*') and (self.btn_7.isEnabled() == True):
-                    next_move = self.btn_7
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_4.text() == '*') and (self.btn_7.text() == '*') and (self.btn_1.isEnabled() == True):
-                    next_move = self.btn_1
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                # third column (3,6,9)
-                elif (self.btn_3.text() == '*') and (self.btn_9.text() == '*') and (self.btn_6.isEnabled() == True):
-                    next_move = self.btn_6
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_3.text() == '*') and (self.btn_6.text() == '*') and (self.btn_9.isEnabled() == True):
-                    next_move = self.btn_9
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_6.text() == '*') and (self.btn_9.text() == '*') and (self.btn_3.isEnabled() == True):
-                    next_move = self.btn_3
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                # first oblique (1,5,9)
-                elif (self.btn_1.text() == '*') and (self.btn_5.text() == '*') and (self.btn_9.isEnabled() == True): # (1,5, )
-                    next_move = self.btn_9
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_1.text() == '*') and (self.btn_9.text() == '*') and (self.btn_5.isEnabled() == True): # (1, ,9)
-                    next_move = self.btn_5
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_5.text() == '*') and (self.btn_9.text() == '*') and (self.btn_1.isEnabled() == True): # ( ,5,9)
-                    next_move = self.btn_1
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                # second oblique (3,5,7)
-                elif (self.btn_3.text() == '*') and (self.btn_5.text() == '*') and (self.btn_7.isEnabled() == True):
-                    next_move = self.btn_7
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_3.text() == '*') and (self.btn_7.text() == '*') and (self.btn_5.isEnabled() == True):
-                    next_move = self.btn_5
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_5.text() == '*') and (self.btn_7.text() == '*') and (self.btn_3.isEnabled() == True):
-                    next_move = self.btn_3
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
+                if winning_move() == False:
                 
                 
-                
-                # no danger
-                elif prevent_losing() == True: # prevent losing the game
-                    # first edge (1)
-                    if (self.btn_1.text() == '*') and (self.btn_2.isEnabled() == True) and (self.btn_3.isEnabled() == True): # vertical
-                        next_move = self.btn_3
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-                    elif (self.btn_1.text() == '*') and (self.btn_4.isEnabled() == True) and (self.btn_7.isEnabled() == True): # horizontal
-                        next_move = self.btn_7
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-                    elif (self.btn_1.text() == '*') and (self.btn_5.isEnabled() == True) and (self.btn_9.isEnabled() == True): # blique
-                        next_move = self.btn_5
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-
-                    # second edge (3)
-                    elif (self.btn_3.text() == '*') and (self.btn_2.isEnabled() == True) and (self.btn_1.isEnabled() == True): # vertical
-                        next_move = self.btn_1
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-                    elif (self.btn_3.text() == '*') and (self.btn_6.isEnabled() == True) and (self.btn_9.isEnabled() == True): # horizontal
-                        next_move = self.btn_9
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-                    elif (self.btn_3.text() == '*') and (self.btn_5.isEnabled() == True) and (self.btn_7.isEnabled() == True): # blique
-                        next_move = self.btn_5
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-
-                    # third edge (7)
-                    elif (self.btn_7.text() == '*') and (self.btn_4.isEnabled() == True) and (self.btn_1.isEnabled() == True): # vertical
-                        next_move = self.btn_1
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-                    elif (self.btn_7.text() == '*') and (self.btn_8.isEnabled() == True) and (self.btn_9.isEnabled() == True): # horizontal
-                        next_move = self.btn_9
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-                    elif (self.btn_7.text() == '*') and (self.btn_5.isEnabled() == True) and (self.btn_3.isEnabled() == True): # blique
-                        next_move = self.btn_5
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-
-                    # forth edge (9)
-                    elif (self.btn_9.text() == '*') and (self.btn_6.isEnabled() == True) and (self.btn_3.isEnabled() == True): # vertical
-                        next_move = self.btn_3
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-                    elif (self.btn_9.text() == '*') and (self.btn_8.isEnabled() == True) and (self.btn_7.isEnabled() == True): # horizontal
-                        next_move = self.btn_7
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-                    elif (self.btn_9.text() == '*') and (self.btn_5.isEnabled() == True) and (self.btn_1.isEnabled() == True): # blique
-                        next_move = self.btn_5
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
-
-                    # center (5)
-                    elif (self.btn_5.text() == '*') and (self.btn_2.isEnabled() == True) and (self.btn_8.isEnabled() == True): # vertical
-                        # good situation for (2)
-                        if (self.btn_1.text() == '*') or (self.btn_3.text() == '*'):
-                            next_move = self.btn_2
-                            next_move.setText('*')
-                            next_move.setEnabled(False)
-                            self.click_counter += 1
-                        elif (self.btn_7.text() == '*') or (self.btn_9.text() == '*'):
-                            # good situation for (8)
-                            next_move = self.btn_8
-                            next_move.setText('*')
-                            next_move.setEnabled(False)
-                            self.click_counter += 1
-                    elif (self.btn_5.text() == '*') and (self.btn_4.isEnabled() == True) and (self.btn_6.isEnabled() == True):
-                        if (self.btn_1.text() == '*') or (self.btn_7.text() == '*'):
-                            # good situation for (4)
-                            next_move = self.btn_4
-                            next_move.setText('*')
-                            next_move.setEnabled(False)
-                            self.click_counter += 1
-                        elif (self.btn_3.text() == '*') or (self.btn_9.text() == '*'):
-                            # good situation for (6)
-                            next_move = self.btn_6
-                            next_move.setText('*')
-                            next_move.setEnabled(False)
-                            self.click_counter += 1
-                    elif (self.btn_5.text() == '*') and (self.btn_1.isEnabled() == True) and (self.btn_9.isEnabled() == True):
-                        if (self.btn_4.text() == '*') or (self.btn_7.text() == '*') or (self.btn_2.text() == '*') or (self.btn_3.text() == '*'):
-                            # good situation for (1)
-                            next_move = self.btn_1
-                            next_move.setText('*')
-                            next_move.setEnabled(False)
-                            self.click_counter += 1
-                        elif (self.btn_3.text() == '*') or (self.btn_6.text() == '*') or (self.btn_8.text() == '*') or (self.btn_7.text() == '*'):
-                            # good situation for (9)
-                            next_move = self.btn_9
-                            next_move.setText('*')
-                            next_move.setEnabled(False)
-                            self.click_counter += 1
-                    elif (self.btn_5.text() == '*') and (self.btn_3.isEnabled() == True) and (self.btn_7.isEnabled() == True):
-                        if (self.btn_6.text() == '*') or (self.btn_9.text() == '*') or (self.btn_2.text() == '*') or (self.btn_1.text() == '*'):
-                            # good situation for (3)
+                    # no danger
+                    if prevent_losing() == True: # prevent losing the game
+                        # first edge (1)
+                        if (self.btn_1.text() == '*') and (self.btn_2.isEnabled() == True) and (self.btn_3.isEnabled() == True): # vertical
                             next_move = self.btn_3
                             next_move.setText('*')
                             next_move.setEnabled(False)
                             self.click_counter += 1
-                        elif (self.btn_8.text() == '*') or (self.btn_9.text() == '*') or (self.btn_1.text() == '*') or (self.btn_4.text() == '*'):
-                            # good situation for (7)
+                        elif (self.btn_1.text() == '*') and (self.btn_4.isEnabled() == True) and (self.btn_7.isEnabled() == True): # horizontal
                             next_move = self.btn_7
                             next_move.setText('*')
                             next_move.setEnabled(False)
                             self.click_counter += 1
+                        elif (self.btn_1.text() == '*') and (self.btn_5.isEnabled() == True) and (self.btn_9.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
 
-                    # middle (2)
-                    elif (self.btn_2.text() == '*') and (self.btn_1.isEnabled() == True) and (self.btn_3.isEnabled() == True): # horizontal (1, ,3)
-                        next_move = random.choice([self.btn_1, self.btn_3])
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
+                        # second edge (3)
+                        elif (self.btn_3.text() == '*') and (self.btn_2.isEnabled() == True) and (self.btn_1.isEnabled() == True): # vertical
+                            next_move = self.btn_1
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_3.text() == '*') and (self.btn_6.isEnabled() == True) and (self.btn_9.isEnabled() == True): # horizontal
+                            next_move = self.btn_9
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_3.text() == '*') and (self.btn_5.isEnabled() == True) and (self.btn_7.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
 
-                    # middle (4)
-                    elif (self.btn_4.text() == '*') and (self.btn_1.isEnabled() == True) and (self.btn_7.isEnabled() == True): # vertical (1, ,7)
-                        next_move = random.choice([self.btn_1, self.btn_7])
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
+                        # third edge (7)
+                        elif (self.btn_7.text() == '*') and (self.btn_4.isEnabled() == True) and (self.btn_1.isEnabled() == True): # vertical
+                            next_move = self.btn_1
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_7.text() == '*') and (self.btn_8.isEnabled() == True) and (self.btn_9.isEnabled() == True): # horizontal
+                            next_move = self.btn_9
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_7.text() == '*') and (self.btn_5.isEnabled() == True) and (self.btn_3.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
 
-                    # middle (6)
-                    elif (self.btn_6.text() == '*') and (self.btn_3.isEnabled() == True) and (self.btn_9.isEnabled() == True): # vertical (3, ,9)
-                        next_move = random.choice([self.btn_3, self.btn_9])
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
+                        # forth edge (9)
+                        elif (self.btn_9.text() == '*') and (self.btn_6.isEnabled() == True) and (self.btn_3.isEnabled() == True): # vertical
+                            next_move = self.btn_3
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_9.text() == '*') and (self.btn_8.isEnabled() == True) and (self.btn_7.isEnabled() == True): # horizontal
+                            next_move = self.btn_7
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+                        elif (self.btn_9.text() == '*') and (self.btn_5.isEnabled() == True) and (self.btn_1.isEnabled() == True): # blique
+                            next_move = self.btn_5
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
 
-                    # middle (8)
-                    elif (self.btn_8.text() == '*') and (self.btn_7.isEnabled() == True) and (self.btn_9.isEnabled() == True): # horizontal (7, ,9)
-                        next_move = random.choice([self.btn_7, self.btn_9])
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
+                        # center (5)
+                        elif (self.btn_5.text() == '*') and (self.btn_2.isEnabled() == True) and (self.btn_8.isEnabled() == True): # vertical
+                            # good situation for (2)
+                            if (self.btn_1.text() == '*') or (self.btn_3.text() == '*'):
+                                next_move = self.btn_2
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                            elif (self.btn_7.text() == '*') or (self.btn_9.text() == '*'):
+                                # good situation for (8)
+                                next_move = self.btn_8
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                        elif (self.btn_5.text() == '*') and (self.btn_4.isEnabled() == True) and (self.btn_6.isEnabled() == True):
+                            if (self.btn_1.text() == '*') or (self.btn_7.text() == '*'):
+                                # good situation for (4)
+                                next_move = self.btn_4
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                            elif (self.btn_3.text() == '*') or (self.btn_9.text() == '*'):
+                                # good situation for (6)
+                                next_move = self.btn_6
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                        elif (self.btn_5.text() == '*') and (self.btn_1.isEnabled() == True) and (self.btn_9.isEnabled() == True):
+                            if (self.btn_4.text() == '*') or (self.btn_7.text() == '*') or (self.btn_2.text() == '*') or (self.btn_3.text() == '*'):
+                                # good situation for (1)
+                                next_move = self.btn_1
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                            elif (self.btn_3.text() == '*') or (self.btn_6.text() == '*') or (self.btn_8.text() == '*') or (self.btn_7.text() == '*'):
+                                # good situation for (9)
+                                next_move = self.btn_9
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                        elif (self.btn_5.text() == '*') and (self.btn_3.isEnabled() == True) and (self.btn_7.isEnabled() == True):
+                            if (self.btn_6.text() == '*') or (self.btn_9.text() == '*') or (self.btn_2.text() == '*') or (self.btn_1.text() == '*'):
+                                # good situation for (3)
+                                next_move = self.btn_3
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
+                            elif (self.btn_8.text() == '*') or (self.btn_9.text() == '*') or (self.btn_1.text() == '*') or (self.btn_4.text() == '*'):
+                                # good situation for (7)
+                                next_move = self.btn_7
+                                next_move.setText('*')
+                                next_move.setEnabled(False)
+                                self.click_counter += 1
 
-                    else:
-                        next_move = self.btn_1
-                        while next_move.isEnabled() == False:
-                            next_move = random.choice(self.btn_list)
+                        # middle (2)
+                        elif (self.btn_2.text() == '*') and (self.btn_1.isEnabled() == True) and (self.btn_3.isEnabled() == True): # horizontal (1, ,3)
+                            next_move = random.choice([self.btn_1, self.btn_3])
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
 
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
+                        # middle (4)
+                        elif (self.btn_4.text() == '*') and (self.btn_1.isEnabled() == True) and (self.btn_7.isEnabled() == True): # vertical (1, ,7)
+                            next_move = random.choice([self.btn_1, self.btn_7])
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+
+                        # middle (6)
+                        elif (self.btn_6.text() == '*') and (self.btn_3.isEnabled() == True) and (self.btn_9.isEnabled() == True): # vertical (3, ,9)
+                            next_move = random.choice([self.btn_3, self.btn_9])
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+
+                        # middle (8)
+                        elif (self.btn_8.text() == '*') and (self.btn_7.isEnabled() == True) and (self.btn_9.isEnabled() == True): # horizontal (7, ,9)
+                            next_move = random.choice([self.btn_7, self.btn_9])
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
+
+                        else:
+                            next_move = self.btn_1
+                            while next_move.isEnabled() == False:
+                                next_move = random.choice(self.btn_list)
+
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
 
                         
 
@@ -793,75 +799,19 @@ class Ui_MainWindow(object):
 
             # ----------------------forth move
             elif self.click_counter == 7:
-                # check if you can win the game
-                # first row (1,2,3)
-                if (self.btn_1.text() == '*') and (self.btn_3.text() == '*') and (self.btn_2.isEnabled() == True):
-                    next_move = self.btn_2
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                # third row (7,8,9)
-                elif (self.btn_7.text() == '*') and (self.btn_9.text() == '*') and (self.btn_8.isEnabled() == True):
-                    next_move = self.btn_8
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
+                self.check_winning()
                 
-                # first column (1,4,7)
-                elif (self.btn_1.text() == '*') and (self.btn_7.text() == '*') and (self.btn_4.isEnabled() == True):
-                    next_move = self.btn_4
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                # third column (3,6,9)
-                elif (self.btn_3.text() == '*') and (self.btn_9.text() == '*') and (self.btn_6.isEnabled() == True):
-                    next_move = self.btn_6
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
+                if self.click_counter == 7:
+                    if winning_move() == False: # check if you can win
+                        # no danger
+                        if prevent_losing() == True: # prevent losing the game
+                            next_move = self.btn_1
+                            while next_move.isEnabled() == False:
+                                next_move = random.choice(self.btn_list)
 
-                # first oblique (1,5,9)
-                elif (self.btn_1.text() == '*') and (self.btn_5.text() == '*') and (self.btn_9.isEnabled() == True): # (1,5, )
-                    next_move = self.btn_9
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_1.text() == '*') and (self.btn_9.text() == '*') and (self.btn_5.isEnabled() == True): # (1, ,9)
-                    next_move = self.btn_5
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_5.text() == '*') and (self.btn_9.text() == '*') and (self.btn_1.isEnabled() == True): # ( ,5,9)
-                    next_move = self.btn_1
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                # second oblique (3,5,7)
-                elif (self.btn_3.text() == '*') and (self.btn_5.text() == '*') and (self.btn_7.isEnabled() == True):
-                    next_move = self.btn_7
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_3.text() == '*') and (self.btn_7.text() == '*') and (self.btn_5.isEnabled() == True):
-                    next_move = self.btn_5
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-                elif (self.btn_5.text() == '*') and (self.btn_7.text() == '*') and (self.btn_3.isEnabled() == True):
-                    next_move = self.btn_3
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
-
-                else:
-                    if prevent_losing() == True:
-                        next_move = self.btn_1
-                        while next_move.isEnabled() == False:
-                            next_move = random.choice(self.btn_list)
-
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
+                            next_move.setText('*')
+                            next_move.setEnabled(False)
+                            self.click_counter += 1
                         
 
                 self.check_winning()
