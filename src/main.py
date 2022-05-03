@@ -526,9 +526,29 @@ class Ui_MainWindow(object):
                     next_move.setText('*')
                     next_move.setEnabled(False)
                     self.click_counter += 1
+                elif (self.btn_1.text() == '*') and (self.btn_2.text() == '*') and (self.btn_3.isEnabled() == True):
+                    next_move = self.btn_3
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                elif (self.btn_2.text() == '*') and (self.btn_3.text() == '*') and (self.btn_1.isEnabled() == True):
+                    next_move = self.btn_1
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
                 # third row (7,8,9)
                 elif (self.btn_7.text() == '*') and (self.btn_9.text() == '*') and (self.btn_8.isEnabled() == True):
                     next_move = self.btn_8
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                elif (self.btn_7.text() == '*') and (self.btn_8.text() == '*') and (self.btn_9.isEnabled() == True):
+                    next_move = self.btn_9
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                elif (self.btn_8.text() == '*') and (self.btn_9.text() == '*') and (self.btn_7.isEnabled() == True):
+                    next_move = self.btn_7
                     next_move.setText('*')
                     next_move.setEnabled(False)
                     self.click_counter += 1
@@ -539,9 +559,29 @@ class Ui_MainWindow(object):
                     next_move.setText('*')
                     next_move.setEnabled(False)
                     self.click_counter += 1
+                elif (self.btn_1.text() == '*') and (self.btn_4.text() == '*') and (self.btn_7.isEnabled() == True):
+                    next_move = self.btn_7
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                elif (self.btn_4.text() == '*') and (self.btn_7.text() == '*') and (self.btn_1.isEnabled() == True):
+                    next_move = self.btn_1
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
                 # third column (3,6,9)
                 elif (self.btn_3.text() == '*') and (self.btn_9.text() == '*') and (self.btn_6.isEnabled() == True):
                     next_move = self.btn_6
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                elif (self.btn_3.text() == '*') and (self.btn_6.text() == '*') and (self.btn_9.isEnabled() == True):
+                    next_move = self.btn_9
+                    next_move.setText('*')
+                    next_move.setEnabled(False)
+                    self.click_counter += 1
+                elif (self.btn_6.text() == '*') and (self.btn_9.text() == '*') and (self.btn_3.isEnabled() == True):
+                    next_move = self.btn_3
                     next_move.setText('*')
                     next_move.setEnabled(False)
                     self.click_counter += 1
