@@ -620,6 +620,7 @@ class Ui_MainWindow(object):
                     self.click_counter += 1
                 
                 
+                
                 # no danger
                 elif prevent_losing() == True: # prevent losing the game
                     # first edge (1)
@@ -759,7 +760,7 @@ class Ui_MainWindow(object):
                         self.click_counter += 1
 
                     # middle (6)
-                    if (self.btn_6.text() == '*') and (self.btn_3.isEnabled() == True) and (self.btn_9.isEnabled() == True): # vertical (3, ,9)
+                    elif (self.btn_6.text() == '*') and (self.btn_3.isEnabled() == True) and (self.btn_9.isEnabled() == True): # vertical (3, ,9)
                         next_move = random.choice([self.btn_3, self.btn_9])
                         next_move.setText('*')
                         next_move.setEnabled(False)
