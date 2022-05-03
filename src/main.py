@@ -716,6 +716,16 @@ class Ui_MainWindow(object):
                             next_move.setText('*')
                             next_move.setEnabled(False)
                             self.click_counter += 1
+
+                    else:
+                        next_move = self.btn_1
+                        while next_move.isEnabled() == False:
+                            next_move = random.choice(self.btn_list)
+
+                        next_move.setText('*')
+                        next_move.setEnabled(False)
+                        self.click_counter += 1
+
                         
 
 
