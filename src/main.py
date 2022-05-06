@@ -137,7 +137,7 @@ class Ui_MainWindow(object):
     #===============================Designer's functions================================
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Tic Tac Toe"))
         self.menuMode.setTitle(_translate("MainWindow", "Mode"))
         self.actionOne_player.setText(_translate("MainWindow", "One Player Mode"))
         self.actionTwo_player.setText(_translate("MainWindow", "Two Player Mode"))
@@ -163,7 +163,6 @@ class Ui_MainWindow(object):
         elif self.twoplayermode_status == True:
             self.twoPlayer_mode()
 
-
     # reset the game
     def game_reset(self):
         for btn in self.btn_list:
@@ -171,8 +170,6 @@ class Ui_MainWindow(object):
             btn.setText('')
         
         self.click_counter = 0
-
-
 
 
     def check_winning(self):
@@ -231,7 +228,6 @@ class Ui_MainWindow(object):
             if is_tie == True:
                 show_winner('tie')
 
-    
 
     # one player mode
     def onePlayer_mode(self):
@@ -239,6 +235,11 @@ class Ui_MainWindow(object):
         self.menuMode.setTitle('One Player Mode')
         self.oneplayermode_status = True
         self.twoplayermode_status = False
+
+        def show_move(next_move):
+            next_move.setText('*')
+            next_move.setEnabled(False)
+            self.click_counter += 1
 
         # check if you can win the game
         def winning_move():
@@ -290,11 +291,8 @@ class Ui_MainWindow(object):
                 return False # cannot win
 
             # show the move
-            next_move.setText('*')
-            next_move.setEnabled(False)
-            self.click_counter += 1
+            show_move(next_move)
 
-            
 
         # prevent from losing situations
         def prevent_losing():
@@ -390,9 +388,8 @@ class Ui_MainWindow(object):
                 return True # there is no danger
 
             # show the move
-            next_move.setText('*')
-            next_move.setEnabled(False)
-            self.click_counter += 1
+            show_move(next_move)
+
 
         # do my move
         if self.click_counter % 2 != 0: # check if it's my turn
@@ -414,9 +411,7 @@ class Ui_MainWindow(object):
                         break
 
                 # show the move
-                next_move.setText('*')
-                next_move.setEnabled(False)
-                self.click_counter += 1
+                show_move(next_move)
 
 
             # ----------------------second move
@@ -460,9 +455,7 @@ class Ui_MainWindow(object):
                             next_move = self.btn_5
 
                     # show the move
-                    next_move.setText('*')
-                    next_move.setEnabled(False)
-                    self.click_counter += 1
+                    show_move(next_move)
                             
 
             # ----------------------third move
@@ -567,9 +560,7 @@ class Ui_MainWindow(object):
 
 
                         # show the move
-                        next_move.setText('*')
-                        next_move.setEnabled(False)
-                        self.click_counter += 1
+                        show_move(next_move)
 
 
 
@@ -591,9 +582,7 @@ class Ui_MainWindow(object):
                                 next_move = random.choice(self.btn_list)
 
                             # show the move
-                            next_move.setText('*')
-                            next_move.setEnabled(False)
-                            self.click_counter += 1
+                            show_move(next_move)
                         
 
                 self.check_winning()
@@ -602,9 +591,7 @@ class Ui_MainWindow(object):
             # ----------------------fifth move ( for the competiter )
             elif self.click_counter == 9:
                 self.check_winning()
-      
-
-
+    
 
     # two player mode
     def twoPlayer_mode(self):
@@ -616,10 +603,7 @@ class Ui_MainWindow(object):
         # check if we have a winnner
         if self.click_counter >= 5: # there have to be at least 5 clickes to have a winner
             self.check_winning()
-            
-
-        
-
+ 
 
 # Run the app
 if __name__ == "__main__":
